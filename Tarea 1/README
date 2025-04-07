@@ -3,7 +3,8 @@ Integrantes:				     rut	    Rol		Paralel0
 	Nicolás Muñoz							  200
 	
 Herramientas utilizadas:
-	-SQL server: Se uso SQL server para la realizacion de la base de datos.
+	-SQL server: Se uso SQL server para la realizacion de la base de datos. se trabajo tanto en windows como en linux,
+	utilizando azure data studio para esta ultima y management studio para windows.
 	-Lucidchart: Utilizado para graficar el modelo conceptual.
 	-Excel: Para fabricar el diccionario de datos.
 	
