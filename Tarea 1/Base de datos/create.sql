@@ -17,22 +17,25 @@ GO
 
 --******************CLASES FUERTES**********************
 --TABLA Autores: Son los autores que escribieron o fueron participes en algun articulo.
+DROP TABLE IF EXISTS Autores;
 CREATE TABLE Autores (
     rut_autor VARCHAR(9) NOT NULL PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    correo VARCHAR(100),
-    CONSTRAINT check_correo CHECK (correo LIKE '%_@_%._%')
+    nombre_autores VARCHAR(50) NOT NULL,
+    correo_autores VARCHAR(100),
+    CONSTRAINT check_correo_a CHECK (correo_autores LIKE '%_@_%._%')
 );
 
 --TABLA Revisores: Son los encargados de revisar cada articulo, y son asignados mediante las especialidades.
+DROP TABLE IF EXISTS Revisores;
 CREATE TABLE Revisores (
     rut_revisor VARCHAR(9) NOT NULL PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    correo VARCHAR(100),
-    CONSTRAINT check_correo CHECK (correo LIKE '%_@_%._%')
+    nombre_revisores VARCHAR(50) NOT NULL,
+    correo_revisores VARCHAR(100),
+    CONSTRAINT check_correo_r CHECK (correo_revisores LIKE '%_@_%._%')
 );
 
 --TABLA Articulos: Son articulos los articulos que los revisores miraran, los autores escriben los articulos segun ciertos topicos
+DROP TABLE IF EXISTS Articulos;
 CREATE TABLE Articulos (
     id_articulo INT NOT NULL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
@@ -41,6 +44,7 @@ CREATE TABLE Articulos (
 );
 
 --TABLA Especialidad_Topicos: Seran los topicos que se tendra disponible para las especialidades.
+DROP TABLE IF EXISTS Especialidad_Topicos;
 CREATE TABLE Especialidad_Topicos (
     id_especialidad_topico INT NOT NULL PRIMARY KEY,
     tipo VARCHAR(35) NOT NULL,
@@ -49,6 +53,7 @@ CREATE TABLE Especialidad_Topicos (
 
 --*******************CLASES DEBILES**********************
 --TABLA Revision: clase asociativa para la relacion M;N entre revisores y autores
+DROP TABLE IF EXISTS Revision;
 CREATE TABLE Revision (
     id_articulo INT NOT NULL,
     rut_revisor VARCHAR(9) NOT NULL,
@@ -58,7 +63,8 @@ CREATE TABLE Revision (
 );
 
 
---TABLA Especialidades: clase asociativa para manejar la relacion M;N entre especialidades_topicos y revisores
+--TABLA Especialidades_Revisores: clase asociativa para manejar la relacion M;N entre especialidades_topicos y revisores
+DROP TABLE IF EXISTS Especialidad_Revisores;
 CREATE TABLE Especialidades_Revisores (
     rut_revisor VARCHAR(9) NOT NULL,
     id_especialidad_topico INT NOT NULL,
@@ -67,7 +73,8 @@ CREATE TABLE Especialidades_Revisores (
     FOREIGN KEY (id_especialidad_topico) REFERENCES Especialidad_Topicos(id_especialidad_topico)
 );
 
---TABLA Especialidades: clase asociativa para manejar la relacion M;N entre especialidades_topicos y revisores
+--TABLA Topicos_articulos: clase asociativa para manejar la relacion M;N entre especialidades_topicos y articulos
+DROP TABLE IF EXISTS Topicos_Articulos;
 CREATE TABLE Topicos_Articulos (
     id_articulo INT NOT NULL,
     id_especialidad_topico INT NOT NULL,
@@ -77,12 +84,13 @@ CREATE TABLE Topicos_Articulos (
 );
 
 --TABLA Envio_Articulo: Clase asociativa para manejar la relacion M;N de autores y articulos. ademas de guardar los datos del autor de contacto
+DROP TABLE IF EXISTS Envio_Articulo;
 CREATE TABLE Envio_Articulo (
     rut_autor VARCHAR(9) NOT NULL,
     id_articulo INT NOT NULL,
     correo_contacto VARCHAR(100),
     userid_contacto VARCHAR(50),
-    password_contacto VARBINARY(50),
+    password_contacto VARBINARY(128),
     PRIMARY KEY (rut_autor, id_articulo),
     FOREIGN KEY (rut_autor) REFERENCES Autores(rut_autor),
     FOREIGN KEY (id_articulo) REFERENCES Articulos (id_articulo)
