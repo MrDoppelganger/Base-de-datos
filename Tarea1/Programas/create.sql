@@ -19,9 +19,9 @@ GO
 --Limpieamos la base de datos para poder correr reiteradas veces el codigo
 DROP TABLE IF EXISTS Envio_Articulo;
 DROP TABLE IF EXISTS Topicos_Articulos;
-DROP TABLE IF EXISTS Especialidades_Revisores;
+DROP TABLE IF EXISTS Especialidad_Revisores;
 DROP TABLE IF EXISTS Revision;
-DROP TABLE IF EXISTS Especialidad_Topicos;
+DROP TABLE IF EXISTS Especialidad_Topico;
 DROP TABLE IF EXISTS Articulos;
 DROP TABLE IF EXISTS Revisores;
 DROP TABLE IF EXISTS Autores;
@@ -30,17 +30,17 @@ DROP TABLE IF EXISTS Autores;
 --TABLA Autores: Son los autores que escribieron o fueron participes en algun articulo.
 CREATE TABLE Autores (
     rut_autor VARCHAR(9) NOT NULL PRIMARY KEY,
-    nombre_autores VARCHAR(50) NOT NULL,
-    correo_autores VARCHAR(100),
-    CONSTRAINT check_correo_a CHECK (correo_autores LIKE '%_@_%._%')
+    nombre_autor VARCHAR(50) NOT NULL,
+    correo_autor VARCHAR(100),
+    CONSTRAINT check_correo_a CHECK (correo_autor LIKE '%_@_%._%')
 );
 
 --TABLA Revisores: Son los encargados de revisar cada articulo, y son asignados mediante las especialidades.
 CREATE TABLE Revisores (
     rut_revisor VARCHAR(9) NOT NULL PRIMARY KEY,
-    nombre_revisores VARCHAR(50) NOT NULL,
-    correo_revisores VARCHAR(100),
-    CONSTRAINT check_correo_r CHECK (correo_revisores LIKE '%_@_%._%')
+    nombre_revisor VARCHAR(50) NOT NULL,
+    correo_revisor VARCHAR(100),
+    CONSTRAINT check_correo_r CHECK (correo_revisor LIKE '%_@_%._%')
 );
 
 --TABLA Articulos: Son articulos los articulos que los revisores miraran, los autores escriben los articulos segun ciertos topicos
@@ -52,7 +52,7 @@ CREATE TABLE Articulos (
 );
 
 --TABLA Especialidad_Topicos: Seran los topicos que se tendra disponible para las especialidades.
-CREATE TABLE Especialidad_Topicos (
+CREATE TABLE Especialidad_Topico (
     id_especialidad_topico INT NOT NULL PRIMARY KEY,
     tipo VARCHAR(35) NOT NULL,
     descripcion VARCHAR(100) NOT NULL
@@ -70,12 +70,12 @@ CREATE TABLE Revision (
 
 
 --TABLA Especialidades_Revisores: clase asociativa para manejar la relacion M;N entre especialidades_topicos y revisores
-CREATE TABLE Especialidades_Revisores (
+CREATE TABLE Especialidad_Revisores (
     rut_revisor VARCHAR(9) NOT NULL,
     id_especialidad_topico INT NOT NULL,
     PRIMARY KEY (rut_revisor, id_especialidad_topico),
     FOREIGN KEY (rut_revisor) REFERENCES Revisores(rut_revisor),
-    FOREIGN KEY (id_especialidad_topico) REFERENCES Especialidad_Topicos(id_especialidad_topico)
+    FOREIGN KEY (id_especialidad_topico) REFERENCES Especialidad_Topico(id_especialidad_topico)
 );
 
 --TABLA Topicos_articulos: clase asociativa para manejar la relacion M;N entre especialidades_topicos y articulos
@@ -84,7 +84,7 @@ CREATE TABLE Topicos_Articulos (
     id_especialidad_topico INT NOT NULL,
     PRIMARY KEY (id_articulo, id_especialidad_topico),
     FOREIGN KEY (id_articulo) REFERENCES Articulos(id_articulo),
-    FOREIGN KEY (id_especialidad_topico) REFERENCES Especialidad_Topicos(id_especialidad_topico)
+    FOREIGN KEY (id_especialidad_topico) REFERENCES Especialidad_Topico(id_especialidad_topico)
 );
 
 --TABLA Envio_Articulo: Clase asociativa para manejar la relacion M;N de autores y articulos. ademas de guardar los datos del autor de contacto

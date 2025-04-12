@@ -1,0 +1,20 @@
+USE GesconDatabase;
+GO
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00001', 'Inteligencia Artificial', 'Especialidad o tópico relacionado con Inteligencia Artificial.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00002', 'Bases de Datos', 'Especialidad o tópico relacionado con Bases de Datos.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00003', 'Redes de Computadores', 'Especialidad o tópico relacionado con Redes de Computadores.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00004', 'Ciberseguridad', 'Especialidad o tópico relacionado con Ciberseguridad.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00005', 'Computación Gráfica', 'Especialidad o tópico relacionado con Computación Gráfica.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00006', 'Algoritmos y Estructuras de Datos', 'Especialidad o tópico relacionado con Algoritmos y Estructuras de Datos.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00007', 'Ingeniería de Software', 'Especialidad o tópico relacionado con Ingeniería de Software.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00008', 'Big Data', 'Especialidad o tópico relacionado con Big Data.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00009', 'Desarrollo Web Full-Stack', 'Especialidad o tópico relacionado con Desarrollo Web Full-Stack.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00010', 'Computación en la Nube', 'Especialidad o tópico relacionado con Computación en la Nube.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00011', 'Sistemas Operativos', 'Especialidad o tópico relacionado con Sistemas Operativos.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00012', 'Teoría de la Computación', 'Especialidad o tópico relacionado con Teoría de la Computación.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00013', 'Aprendizaje Automático', 'Especialidad o tópico relacionado con Aprendizaje Automático.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00014', 'Visión por Computador', 'Especialidad o tópico relacionado con Visión por Computador.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00015', 'Procesamiento de Lenguaje Natural', 'Especialidad o tópico relacionado con Procesamiento de Lenguaje Natural.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00016', 'Blockchain', 'Especialidad o tópico relacionado con Blockchain.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00017', 'Internet de las Cosas', 'Especialidad o tópico relacionado con Internet de las Cosas.');
+INSERT INTO Especialidad_Topico (id_especialidad_topico, tipo, descripcion) VALUES ('00018', 'Realidad Virtual y Aumentada', 'Especialidad o tópico relacionado con Realidad Virtual y Aumentada.');
