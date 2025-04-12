@@ -7,5 +7,20 @@ Herramientas utilizadas:
 	utilizando azure data studio para esta ultima y management studio para windows.
 	-Lucidchart: Utilizado para graficar el modelo conceptual.
 	-Excel: Para fabricar el diccionario de datos.
+	-Python: Para generar los datos y insertarlos, es necesario instalar la libreria faker
 	
 Intrucciones de compilación:
+
+Creacion de datos: Para el poblamient de datos, se creo un script en python llamado "generador de datos" que ejecutaremos
+	en caso de que se necesite poblar la base de datos, este generara distintos archivos .csv, que deberan ser movidos a
+	la carpeta CSV que se ubica dentro de la carpeta "Programas", dentro de esta ultima, tambien se ubicara el script 
+	"fabric pobladores" que al compilar generara un conjunto de documentos .sql encargados de poblar la base de datos
+	NOTA: es importante saber que en caso de que se quiera poblar la base de datos, PRIMERO se debe poblar las clases
+	fuertes (estas son: Autores, Revisores, Articulos y Especialidad_Topico) y ya luego se podran poblar las demas tablas.
+
+Compilacion: la Compilacion se realizo en Linux con SQLserver desde Azure Data Studio, primero se creo una imagen utilizando
+	Docker desde la terminal, se utilizo la creacion standar mediante el siguiente codigo:
+	sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Qazwsxedc123!" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2022-latest
+	ya con la imagen creada, se conectara el programa a la imagen desde el Azure Data studio, y se partira compilando el
+	script create.sql, generando todas la estructura de las tablas en la base de datos, luego se procedera a poblar, utilizando 
+	los script de po
