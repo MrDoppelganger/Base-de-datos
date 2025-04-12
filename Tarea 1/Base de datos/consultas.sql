@@ -3,6 +3,6 @@ USE GesconDatabase;
 GO
 
 --Consulta 1: Nombres y Resumenes de articulos cuyo título empiece por "O"
-SELECT titulo, resumen, nom
+SELECT titulo, resumen
 FROM Articulos
-WHERE titulo LIKE "O%";
+WHERE titulo LIKE 'O%';
