@@ -189,12 +189,7 @@ def generar_articulos(cantidad, autores_disponibles, topico_a_id_map):
         userid_cont = f"{autor_contacto_info['nombre'].split()[0].lower()}{autor_contacto_rut[:4]}"
 
         # Generar contraseña hexadecimal
-        password_cont = "0x" + uuid.uuid4().hex # Genera un UUID y lo convierte a hexadecimal
-
-        # Asegurarse de que la longitud de la cadena hexadecimal sea par
-        hex_part = password_cont[2:]  # Eliminar el prefijo "0x"
-        if len(hex_part) % 2 != 0:
-            password_cont = "0x0" + hex_part  # Agregar un "0" al principio si es impar
+        password_cont = uuid.uuid4().hex # Genera un UUID y lo convierte a hexadecimal
 
         envio_articulo_data.append({
             'id_articulo': id_art,
