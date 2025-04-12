@@ -4,6 +4,7 @@ import random
 import csv
 import os
 import uuid
+import uuid
 
 # --- Configuración inicial ---
 fake = Faker('es_CL')
@@ -72,17 +73,18 @@ def generar_persona_unica(cantidad, tipo_persona):
 
     while len(personas) < cantidad and intentos < max_intentos:
         rut = fake.unique.rut()
+        rut_sin_formato = rut.replace('.', '').replace('-', '') # Eliminar puntos y guiones
         correo = fake.unique.email()
         intentos += 1
 
         # Validar formato RUT chileno básico (simplificado)
-        if not (7 <= len(rut.replace('.', '').replace('-', '')) <= 9):
+        if not (7 <= len(rut_sin_formato) <= 9):
              continue # Intentar de nuevo si el formato no parece correcto
 
-        if rut not in ruts_usados_globalmente and correo not in correos_usados_globalmente:
+        if rut_sin_formato not in ruts_usados_globalmente and correo not in correos_usados_globalmente:
             nombre = fake.name()
-            personas.append({'rut': rut, 'nombre': nombre, 'correo': correo})
-            ruts_usados_globalmente.add(rut)
+            personas.append({'rut': rut_sin_formato, 'nombre': nombre, 'correo': correo})
+            ruts_usados_globalmente.add(rut_sin_formato)
             correos_usados_globalmente.add(correo)
             fake.unique.clear()
             if len(personas) % 10 == 0:
@@ -185,16 +187,17 @@ def generar_articulos(cantidad, autores_disponibles, topico_a_id_map):
         # --- Cambios en Generación de Envío Artículo ---
         # *** Crear UNA SOLA entrada para el autor de contacto ***
         userid_cont = f"{autor_contacto_info['nombre'].split()[0].lower()}{autor_contacto_rut[:4]}"
-        password_cont = str(uuid.uuid4())[:8] # Password simple
+
+        # Generar contraseña hexadecimal
+        password_cont = "0x" + uuid.uuid4().hex # Genera un UUID y lo convierte a hexadecimal
 
         envio_articulo_data.append({
             'id_articulo': id_art,
             'rut_autor': autor_contacto_rut, # RUT del contacto
             'correo_contacto': autor_contacto_info['correo'], # Correo del contacto
             'userid_contacto': userid_cont, # Userid del contacto
-            'password_contacto': password_cont # Password del contacto
+            'password_contacto': password_cont # Password del contacto (hexadecimal)
         })
-        # --- Fin Cambios ---
 
         # Guardar temporalmente qué autores tiene cada artículo (para referencia si es necesario, aunque envio_articulo ahora solo tiene 1)
         articulos_con_autores.append({'id_articulo': id_art, 'autores_ruts': autores_seleccionados_ruts})
