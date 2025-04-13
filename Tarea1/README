@@ -1,26 +1,55 @@
-Integrantes:				     rut	    Rol		Paralel0
-	Vicente Rodríguez Rogers	 21.303.222-4	202273503-1	  201
-	Nicolás Muñoz							  200
-	
-Herramientas utilizadas:
-	-SQL server: Se uso SQL server para la realizacion de la base de datos. se trabajo tanto en windows como en linux,
-	utilizando azure data studio para esta ultima y management studio para windows.
-	-Lucidchart: Utilizado para graficar el modelo conceptual.
-	-Excel: Para fabricar el diccionario de datos.
-	-Python: Para generar los datos y insertarlos, es necesario instalar la libreria faker
-	
-Intrucciones de compilación:
+===========================================================================================================
+                                                  (Tarea 1 BDD)
 
-Creacion de datos: Para el poblamient de datos, se creo un script en python llamado "generador de datos" que ejecutaremos
-	en caso de que se necesite poblar la base de datos, este generara distintos archivos .csv, que deberan ser movidos a
-	la carpeta CSV que se ubica dentro de la carpeta "Programas", dentro de esta ultima, tambien se ubicara el script 
-	"fabric pobladores" que al compilar generara un conjunto de documentos .sql encargados de poblar la base de datos
-	NOTA: es importante saber que en caso de que se quiera poblar la base de datos, PRIMERO se debe poblar las clases
-	fuertes (estas son: Autores, Revisores, Articulos y Especialidad_Topico) y ya luego se podran poblar las demas tablas.
+===========================================================================================================
+Nombre: Vicente Rodríguez Rogers		21.303.222-4	202273503-1	201
+	Nicolás Muñoz  				21.270.184-K	202273641-0	200
+Fecha:  10/04/2025
+-----------------------------------------------------------------------------------------------------------
 
-Compilacion: la Compilacion se realizo en Linux con SQLserver desde Azure Data Studio, primero se creo una imagen utilizando
-	Docker desde la terminal, se utilizo la creacion standar mediante el siguiente codigo:
-	sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Qazwsxedc123!" -p 1433:1433 --name sql1 --hostname sql1 -d mcr.microsoft.com/mssql/server:2022-latest
-	ya con la imagen creada, se conectara el programa a la imagen desde el Azure Data studio, y se partira compilando el
-	script create.sql, generando todas la estructura de las tablas en la base de datos, luego se procedera a poblar, utilizando 
-	los script de po
+[Herramientas Utilizadas]
+
+-----------------------------------------------------------------------------------------------------------
+-SQL server: Creación de la base de datos.
+-Lucidchart: Utilizado para graficar el modelo conceptual.
+-Excel: Para fabricar el diccionario de datos.
+-Python: Para generar los datos y insertarlos, es necesario instalar la libreria faker
+-----------------------------------------------------------------------------------------------------------
+
+[Ambiente de Ejecución Usado]
+
+-----------------------------------------------------------------------------------------------------------
+- Sistema Operativo usado: Windows 11, Ubuntu
+- Azure data studio
+- Management studio
+-----------------------------------------------------------------------------------------------------------
+
+[Instrucciones de Ejecución]
+
+-----------------------------------------------------------------------------------------------------------
+
+1- Crear una base de datos con el nombre GesconDatabase y ejecutar los siguientes archivos con el botón (F5)
+
+2- Abrir el archivo create y ejecutar 
+
+3- Abrir el archivo poblar_articulos y ejecutar 
+
+4- Abrir el archivo poblar_autores y ejecutar 
+
+5- Abrir el archivo poblar_revisores y ejecutar 
+
+6- Abrir el archivo poblar_especialidad_topico y ejecutar 
+
+7- Abrir el archivo especiaildad_revisores y ejecutar 
+
+8- Abrir el archivo topico_articulo y ejecutar 
+
+9- Abrir el archivo revision y ejecutar 
+
+10- Abrir el archivo envio_arituculos y ejecutar 
+
+11- Ejecutar la consulta correspondiente 
+
+-----------------------------------------------------------------------------------------------------------
+
+[Consideraciones]
