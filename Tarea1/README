@@ -53,3 +53,20 @@ Fecha:  10/04/2025
 -----------------------------------------------------------------------------------------------------------
 
 [Consideraciones]
+
+-----------------------------------------------------------------------------------------------------------
+-En caso de querer generar nuvos datos, los pasos a seguir son:
+
+	0- En caso de existir ya de antemano los documentos CSV y "poblar_%" deberan ser eliminados
+
+	1- Ejecutar el script "generador de datos.py"
+
+	2- Mover todo los archivos .csv a la carpeta "CSV" ubicada dentro de "Programas"
+
+	3- Ejecutar el script "fabric pobladores"
+
+-Se realizo un cambio en la consulta N°7, cambiando la palabra de busqueda "Gestion" por "web" para generar
+coincidencias con el diseño de nuestros datos.
+
+-Por dudas sobre interpretación, se realizo dos veces la consulta N°2, una mostrando todo los articulos del autor,
+y otra con la cantidad numerica de articulos.

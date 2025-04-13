@@ -36,6 +36,9 @@ GO
 
 
 --Consulta 2.1: Obtenemos el numero de articulos por cada autor.
+USE GesconDatabase;
+GO
+
 SELECT a.rut_autor, a.nombre_autor, COUNT(e.rut_autor) AS cantidad_articulos
 FROM Autores a
 JOIN Envio_Articulo e ON a.rut_autor = e.rut_autor
