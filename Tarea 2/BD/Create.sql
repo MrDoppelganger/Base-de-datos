@@ -24,7 +24,7 @@ CREATE TABLE Autores (
     correo_autor VARCHAR(100) NOT NULL,
     rol_autor VARCHAR(25),
     usuario_autor VARCHAR(35),
-    contraseña_autor VARBINARY(255),
+    contraseña_autor VARBINARY(255)
 );
 
 -- TABLA Revisores: Son los encargados de revisar cada articulo, y son asignados mediante las especialidades.
@@ -34,7 +34,7 @@ CREATE TABLE Revisores (
     correo_revisor VARCHAR(100) NOT NULL,
     rol_revisor VARCHAR(25),
     usuario_revisor VARCHAR(35),
-    contraseña_revisor VARBINARY(255),
+    contraseña_revisor VARBINARY(255)
 );
 
 -- TABLA Articulos: Son articulos los articulos que los revisores miraran, los autores escriben los articulos segun ciertos topicos
