@@ -25,7 +25,6 @@ CREATE TABLE Autores (
     rol_autor VARCHAR(25),
     usuario_autor VARCHAR(35),
     contraseña_autor VARBINARY(255),
-    CONSTRAINT check_correo_a CHECK (correo_autor LIKE '%@%.%') 
 );
 
 -- TABLA Revisores: Son los encargados de revisar cada articulo, y son asignados mediante las especialidades.
@@ -36,7 +35,6 @@ CREATE TABLE Revisores (
     rol_revisor VARCHAR(25),
     usuario_revisor VARCHAR(35),
     contraseña_revisor VARBINARY(255),
-    CONSTRAINT check_correo_r CHECK (correo_revisor LIKE '%@%.%') 
 );
 
 -- TABLA Articulos: Son articulos los articulos que los revisores miraran, los autores escriben los articulos segun ciertos topicos
@@ -45,7 +43,7 @@ CREATE TABLE Articulos (
     titulo VARCHAR(100) NOT NULL,
     fecha_envio DATE NOT NULL,
     resumen VARCHAR(150) NOT NULL,
-    estado VARCHAR(25),
+    estado VARCHAR(25)
 );
 
 -- TABLA Especialidad_Topicos: Seran los topicos que se tendra disponible para las especialidades.
