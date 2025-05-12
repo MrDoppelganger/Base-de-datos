@@ -70,6 +70,7 @@ def generar_persona_unica(cantidad, tipo_persona):
      personas = []
      intentos = 0
      max_intentos = cantidad * 10  # Aumentar margen por si hay muchas colisiones
+     rol = "autor" if tipo_persona == "autores" else "revisor"  # Determine the role
  
      while len(personas) < cantidad and intentos < max_intentos:
          rut = fake.unique.rut()
@@ -86,6 +87,7 @@ def generar_persona_unica(cantidad, tipo_persona):
              usuario = f"{nombre.split()[0].lower()}{rut_sin_formato[:4]}"  # Generate initial username
              contrasena = uuid.uuid4().hex
              personas.append({'rut': rut_sin_formato, 'nombre': nombre, 'correo': correo,
+                              'rol': rol,  # Add the role here
                               'usuario': usuario, 'contrasena': contrasena})
              ruts_usados_globalmente.add(rut_sin_formato)
              correos_usados_globalmente.add(correo)
@@ -373,8 +375,15 @@ def renombrar_claves(lista_diccionarios, mapeo_claves):
 mapeo_autores = {'rut': 'rut_autor', 'nombre': 'nombre_autor', 'correo': 'correo_autor', 'usuario': 'usuario_autor', 'contrasena': 'contraseña_autor'}
 mapeo_revisores = {'rut': 'rut_revisor', 'nombre': 'nombre_revisor', 'correo': 'correo_revisor', 'usuario': 'usuario_revisor', 'contrasena': 'contraseña_revisor'}
  
-autores_csv_list = renombrar_claves(autores_generados, mapeo_autores)
-revisores_csv_list = renombrar_claves(revisores_generados, mapeo_revisores)
+autores_csv_list = renombrar_claves(list(autores_generados), mapeo_autores)
+revisores_csv_list = renombrar_claves(list(revisores_generados), mapeo_revisores)
+
+print("--- Contenido de autores_csv_list ---")
+for autor in autores_csv_list[:5]:  # Imprime los primeros 5 para inspeccionar
+    print(autor)
+print("--- Contenido de revisores_csv_list ---")
+for revisor in revisores_csv_list[:5]: # Imprime los primeros 5 para inspeccionar
+    print(revisor)
  
 # Lista de archivos a generar (envio_articulo ya está con los datos correctos)
 archivos_a_generar = [
@@ -390,8 +399,7 @@ archivos_a_generar = [
 
 # Escribir todos los archivos
 for archivo_info in archivos_a_generar:
-    escribir_csv(archivo_info['nombre'], archivo_info['datos'], archivo_info['encabezados'])
-
+    escribir_csv(archivo_info['nombre'], archivo_info['datos'], archivo_info.get('encabezados'))
 
 end_total_time = time.time()
 print(f"\n--- GENERACIÓN TOTAL COMPLETADA EN {end_total_time - start_total_time:.2f} SEGUNDOS ---")
@@ -417,5 +425,5 @@ print("\nCondiciones aplicadas:")
 print(f"- Cada artículo en 'revision.csv' tiene {REVISORES_POR_ARTICULO} revisores.")
 print("- Revisores asignados tienen al menos 1 especialidad coincidente con el tópico del artículo.")
 print("- 'envio_articulo.csv' contiene solo 1 fila por artículo (autor de contacto).")
-print("- RUTs y Correos únicos entre Autores y Revisores.")
+print("- RUTs y Correos únicos entre Autores y Revisores. Usuarios únicos.")
 print("- IDs secuenciales.")
