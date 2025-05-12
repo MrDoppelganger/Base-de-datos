@@ -90,6 +90,8 @@ CREATE TABLE Envio_Articulo (
     rut_autor VARCHAR(9) NOT NULL,
     id_articulo INT NOT NULL,
     autor_contacto VARCHAR(100),
+    usuario_contacto VARCHAR(35),
+    contraseña_contacto VARBINARY(255),
     PRIMARY KEY (rut_autor, id_articulo),
     FOREIGN KEY (rut_autor) REFERENCES Autores(rut_autor) ON DELETE CASCADE, 
     FOREIGN KEY (id_articulo) REFERENCES Articulos(id_articulo) ON DELETE CASCADE 
