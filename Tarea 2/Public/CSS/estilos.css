@@ -66,6 +66,7 @@ body {
     position: relative;
 }
 
+/* Marco */
 .login-container::before {
     content: "";
     position: absolute;
@@ -77,6 +78,8 @@ body {
     border-radius: 10px 10px 0 0;
     transform: translateX(-50%);
 }
+
+/* Bolitas */
 .login-container::after {
     content: "";
     position: absolute;
@@ -89,44 +92,26 @@ body {
     box-shadow: 30px 0 0 rgb(212, 48, 212), 60px 0 0 rgb(212, 48, 212);
 }
 
-.bolitas {
-    position: absolute;
-    top: -15px;
-    left: 15px;
-    display: flex;
-    gap: 5px;
-}
-
-.bolita {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: red;
-}
-
-.bolita:nth-child(2) {
-    background-color: yellow;
-}
-
-.bolita:nth-child(3) {
-    background-color: green;
-}
-
+/* Titulo */
 .login-container h2 {
     text-align: center;
+    font-size: 300%;
     color: #333;
 }
 
+/* Margen */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
+/* Texto de inputs*/
 label {
     display: block;
     margin-bottom: 5px;
     color: #040018;
 }
 
+/* visual input*/
 input[type="text"], input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -135,10 +120,11 @@ input[type="text"], input[type="password"] {
     box-sizing: border-box; /* Importante para el padding */
 }
 
+/* visual input boton*/
 input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #72081f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -156,9 +142,9 @@ input[type="submit"]:hover {
     text-align: center;
 }
 
-/* Estilos para enlaces */
+/*-------------------------Estilos para enlaces--------------- */
 a {
-    color: #007bff;
+    color: #72081f;
     text-decoration: none;
 }
 
@@ -166,7 +152,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Estilos del pie de página (footer) - Asumiendo footer.php */
+/*---------------------Estilos del pie de página(footer.php)------------------*/
 #footer {
     background: #333;
     color: white;
@@ -175,14 +161,14 @@ a:hover {
     margin-top: 20px;
 }
 
-/* Logo */
+/*------------Logo------------------*/
 #logo {
     float: left;
     width: 150px; /* Ajusta el ancho según tu logo */
     height: auto;
 }
 
-/* Fondo (opcional - si quieres una imagen de fondo para toda la página) */
+/*----------------- Fondo----------------------*/
 body {
     background-image: url('../IMG/background.png');
     background-size: cover;
