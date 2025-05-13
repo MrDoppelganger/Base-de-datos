@@ -19,10 +19,52 @@ Fecha:  10/04/2025
 [Ambiente de Ejecución Usado]
 
 -----------------------------------------------------------------------------------------------------------
-- Sistema Operativo usado: Windows 11, Ubuntu
-- Azure data studio
-- Management studio
+- Sistema Operativo usado: Windows 11, Ubuntu 22.04.5 
+- Visual studio Code
+- PhpMyAdmin (con Apache2)
+-
 -----------------------------------------------------------------------------------------------------------
+
+[Estructura de Archivos y Descripción]
+
+-----------------------------------------------------------------------------------------------------------
+tarea 2/
+├── BD/
+│   ├── create.sql         : Script SQL para crear la base de datos y las tablas en MySQL.
+│   └── Datos/
+│       ├── poblador_todas_las_tablas.sql     : Script SQL para insertar datos de prueba en la base de datos.
+│       ├── fabricador poblador.py    : Script Python para poblar la BD a partir de los CSV.
+│       ├── generador de datos.py    : Script Python para generar datos random en CSV con el formato de la BD.
+│       ├── CSV/    : Carpeta con los Archivos CSV con datos para la base de datos (generado con Python).
+├── Documentos/
+│   ├── Normalizacion BD.pdf  : Documento PDF que contiene los pasos de la normalización 3FN.
+│   └── Modelo Relacional.pdf         : Documento PDF que contiene el modelo relacional de la base de datos.
+├── PHP/
+│   ├── conexion.php       : Archivo PHP para establecer la conexión con la base de datos MySQL.
+│   ├── verificar_login.php: Archivo PHP para verificar las credenciales del usuario durante el inicio de sesión.
+│   │                        Conecta con la base de datos usando conexion.php.
+│   ├── registro.php       : Archivo PHP para registrar nuevos usuarios (Autores y Revisores).
+│   │                        Conecta con la base de datos usando conexion.php.
+│   ├── home.php           : Archivo PHP que representa la página principal de la aplicación después del inicio de sesión.
+│   │                        Muestra información y funcionalidades según el rol del usuario.
+│   ├── funciones_usuario.php: (Opcional) Archivo PHP para funciones relacionadas con la gestión de usuarios.
+│   │                        Conecta con la base de datos usando conexion.php.
+│   ├── includes/          : (Opcional) Directorio para archivos PHP que contienen fragmentos de HTML reutilizables.
+│   │   ├── header.php     : (Opcional) Fragmento HTML para la cabecera de la página.
+│   │   ├── footer.php     : (Opcional) Fragmento HTML para el pie de página.
+│   │   └── navbar.php     : (Opcional) Fragmento HTML para la barra de navegación.
+│   └── login.php          : Archivo PHP que muestra el formulario de inicio de sesión y procesa el inicio de sesión.
+│                            Conecta con la base de datos usando conexion.php. Es el punto de entrada a la aplicación.
+├── public/
+│   ├── css/
+│   │   └── estilos.css     : Archivo CSS para definir el estilo de la página web.
+│   ├── js/
+│   │   └── script.js      : (Opcional) Archivo JavaScript para funcionalidades del lado del cliente.
+│   ├── img/
+│   │   └── logo.png       : (Opcional) Archivo de imagen para el logo.
+├── README.md            : Archivo con la descripción del proyecto, instrucciones y consideraciones.
+-----------------------------------------------------------------------------------------------------------
+
 
 [Instrucciones de Ejecución]
 
