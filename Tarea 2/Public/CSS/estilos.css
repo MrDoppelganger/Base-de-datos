@@ -1,0 +1,206 @@
+/* estilos.css */
+
+/*----------------------Estilo General-------------------- */
+body {
+    font-family: sans-serif;
+    background-color: #798eaa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* ----------------Estilo Header(header.php)----------------*/
+#header {
+    background: #333;
+    color: white;
+    padding-top: 20px;
+    min-height: 70px;
+}
+
+#header h1 {
+    float: left;
+    margin-top: 10px;
+}
+
+#header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+#header nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+#header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+#header a:hover {
+    color: #aaa;
+}
+
+/*-------------------Estilo Login(login.html)-------------------- */
+.login-container {
+    width: 600px;
+    margin: 200px auto;
+    padding: 40px;
+    border: 2px solid #a38ca3;
+    border-radius: 10px;
+    background-color: #bb97bd;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.login-container::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: 682px;
+    height: 40px;
+    background-color: #50295c;
+    border-radius: 10px 10px 0 0;
+    transform: translateX(-50%);
+}
+.login-container::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(212, 48, 212);
+    border-radius: 50%;
+    box-shadow: 30px 0 0 rgb(212, 48, 212), 60px 0 0 rgb(212, 48, 212);
+}
+
+.bolitas {
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    display: flex;
+    gap: 5px;
+}
+
+.bolita {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.bolita:nth-child(2) {
+    background-color: yellow;
+}
+
+.bolita:nth-child(3) {
+    background-color: green;
+}
+
+.login-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #040018;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd; /* Borde más suave */
+    border-radius: 5px;
+    box-sizing: border-box; /* Importante para el padding */
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Estilos para enlaces */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos del pie de página (footer) - Asumiendo footer.php */
+#footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Logo */
+#logo {
+    float: left;
+    width: 150px; /* Ajusta el ancho según tu logo */
+    height: auto;
+}
+
+/* Fondo (opcional - si quieres una imagen de fondo para toda la página) */
+body {
+    background-image: url('../IMG/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+} 
+
+/* Otros estilos que puedas necesitar para tablas, listas, etc. */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}

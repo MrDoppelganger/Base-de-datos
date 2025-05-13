@@ -1,12 +1,15 @@
 <?php
-session_start(); // Inicia la sesión (si no está iniciada)
+//--------------Preparacion-------------------------
+// Inicia la sesión (si no está iniciada).
+session_start(); 
 
-// Incluye el archivo de conexión a la base de datos
+// Importamos el archivo que nos conecta a la base de datos.
 include("conexion.php");
 
 // Variables para almacenar mensajes de error
 $error_message = "";
 
+//---------Conexion y manejo de login---------------
 // Procesa el formulario cuando se envía
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Valida y sanea los datos del formulario
