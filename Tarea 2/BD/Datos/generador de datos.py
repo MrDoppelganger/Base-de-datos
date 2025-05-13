@@ -205,8 +205,8 @@ def generar_articulos(cantidad, autores_disponibles, topico_a_id_map):
              'id_articulo': id_art,
              'rut_autor': autor_contacto_rut,  # RUT del contacto
              'autor_contacto': autor_contacto_info['correo'],  # Correo del contacto (renombrado a autor_contacto)
-             'usuario_autor': autor_contacto_info['usuario'],  # Userid del contacto
-             'contraseña_autor': autor_contacto_info['contrasena']  # Password del contacto (hexadecimal)
+             'usuario_contacto': autor_contacto_info['usuario'],  # Userid del contacto
+             'contraseña_contacto': autor_contacto_info['contrasena']  # Password del contacto (hexadecimal)
          })
 
         # Guardar temporalmente qué autores tiene cada artículo (para referencia si es necesario, aunque envio_articulo ahora solo tiene 1)
@@ -385,7 +385,7 @@ archivos_a_generar = [
      {'nombre': "especialidad_revisores.csv", 'datos': especialidad_revisores_data, 'encabezados': ['rut_revisor', 'id_especialidad_topico']},
      {'nombre': "topicos_articulos.csv", 'datos': topicos_articulos_data, 'encabezados': ['id_articulo', 'id_especialidad_topico']},
      {'nombre': "revision.csv", 'datos': revision_data, 'encabezados': ['id_articulo', 'rut_revisor', 'fecha_revision', 'comentarios', 'calificacion']},
-     {'nombre': "envio_articulo.csv", 'datos': envio_articulo_data, 'encabezados': ['id_articulo', 'rut_autor', 'autor_contacto', 'usuario_autor', 'contraseña_autor']}
+     {'nombre': "envio_articulo.csv", 'datos': envio_articulo_data, 'encabezados': ['id_articulo', 'rut_autor', 'autor_contacto', 'usuario_contacto', 'contraseña_contacto']}
  ]
 
 # Escribir todos los archivos

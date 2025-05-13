@@ -28,19 +28,43 @@ def generar_insert_sql(nombre_tabla, nombre_csv):
         with open(ruta_csv, newline='', encoding='utf-8') as csvfile:
             lector = csv.reader(csvfile)
             encabezados = next(lector)  # Obtener los nombres de las columnas
-            columnas = ', '.join(encabezados)
+            columnas_lista = list(encabezados)
+
+            columnas = ', '.join(columnas_lista)
+
+            # Índice del rol si existe
+            indice_rol = None
+            if nombre_tabla == 'Autores' and 'rol_autor' in columnas_lista:
+                indice_rol = columnas_lista.index('rol_autor')
+            elif nombre_tabla == 'Revisores' and 'rol_revisor' in columnas_lista:
+                indice_rol = columnas_lista.index('rol_revisor')
 
             for fila in lector:
-                valores = []
-                for i, valor in enumerate(fila):
-                    # Manejo especial para la contraseña en Envio_Articulo
-                    if nombre_tabla == 'Envio_Articulo' and encabezados[i] == 'contraseña_autor':
-                        valores.append(f"CONVERT(VARBINARY(128), '{valor.strip()}', 2)")
-                    else:
-                        valores.append(f"'{valor.strip()}'")
-                valores_str = ', '.join(valores)
+                valores = list(fila)
+
+                # Si hay menos valores que columnas, los rellenamos con ''
+                while len(valores) < len(columnas_lista):
+                    valores.append('')
+
+                # Si el valor de rol está vacío, lo rellenamos
+                if nombre_tabla == 'Autores' and indice_rol is not None:
+                    if valores[indice_rol].strip() == '':
+                        valores[indice_rol] = 'autor'
+
+                elif nombre_tabla == 'Revisores' and indice_rol is not None:
+                    if valores[indice_rol].strip() == '':
+                        valores[indice_rol] = 'revisor'
+
+                # Escapar comillas y formatear cada valor
+                valores_formateados = []
+                for v in valores:
+                    limpio = v.strip().replace("'", "''")  # Escapar comillas simples para SQL
+                    valores_formateados.append(f"'{limpio}'")
+                
+                valores_str = ', '.join(valores_formateados)
                 sentencia = f"INSERT INTO {nombre_tabla} ({columnas}) VALUES ({valores_str});"
                 sentencias_sql.append(sentencia)
+
     except FileNotFoundError:
         print(f"Error: No se encontró el archivo CSV: {ruta_csv}")
         return []
@@ -49,6 +73,7 @@ def generar_insert_sql(nombre_tabla, nombre_csv):
         return []
 
     return sentencias_sql
+
 
 # Generar todas las sentencias INSERT para todas las tablas
 todas_las_sentencias = []
