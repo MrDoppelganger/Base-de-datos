@@ -1,0 +1,87 @@
+/* Estilos generales */
+body.pagina-autor {
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    padding: 20px 10px;
+}
+
+/* Contenedor principal */
+.contenedor-principal {
+    display: flex;
+    width: 95%;
+    max-width: 1400px;
+    margin: 30px auto;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+/* Formulario morado (izquierda) */
+.formulario-articulo {
+    width: 55%;
+    min-width: 500px;
+    background: #bb97bd;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-right: auto;
+    flex-shrink: 0;
+}
+
+/* Decoración del panel */
+.formulario-articulo::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: calc(100% + 4px);
+    height: 36px;
+    background-color: #50295c;
+    border-radius: 10px 10px 0 0;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.formulario-articulo::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(212, 48, 212);
+    border-radius: 50%;
+    box-shadow: 30px 0 0 rgb(212, 48, 212), 60px 0 0 rgb(212, 48, 212);
+}
+
+/* Estilos del formulario (mantén los que tienes) */
+
+/* Tabla (derecha) */
+.tabla-articulos {
+    width: 45%;
+    min-width: 450px;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de tabla (mantén los que tienes) */
+
+/* Responsive mejorado */
+@media (max-width: 1000px) {
+    .contenedor-principal {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .formulario-articulo,
+    .tabla-articulos {
+        width: 90%;
+        min-width: unset;
+        margin: 0 auto 30px;
+    }
+}

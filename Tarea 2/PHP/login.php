@@ -1,40 +1,47 @@
 <?php
-//--------------Preparacion-------------------------
-// Inicia la sesión (si no está iniciada).
 session_start(); 
-
-// Importamos el archivo que nos conecta a la base de datos.
 include("conexion.php");
 
-// Variables para almacenar mensajes de error
 $error_message = "";
 
-//---------Conexion y manejo de login---------------
-// Procesa el formulario cuando se envía
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Valida y sanea los datos del formulario
     $usuario = mysqli_real_escape_string($conexion, $_POST["usuario"]);
-    $password = $_POST["password"]; // No sanear la contraseña aquí, se hace después
+    $password = $_POST["password"];
 
-    // Validaciones básicas (puedes agregar más)
     if (empty($usuario) || empty($password)) {
         $error_message = "Por favor, ingresa usuario y contraseña.";
     } else {
-        // Consulta la base de datos para verificar las credenciales
-        $query = "SELECT id, rol, password FROM usuarios WHERE usuario = '$usuario'";
-        $result = mysqli_query($conexion, $query);
+        // Buscar en tabla autores
+        $query_autor = "SELECT rut_autor AS rut, nombre_autor AS nombre, correo_autor AS correo, usuario_autor AS usuario, contraseña_autor AS password 
+                        FROM autores 
+                        WHERE usuario_autor = '$usuario'";
+        $result_autor = mysqli_query($conexion, $query_autor);
 
-        if ($result && mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_assoc($result);
-            $hashed_password = $row["password"];
+        if ($result_autor && mysqli_num_rows($result_autor) == 1) {
+            $row = mysqli_fetch_assoc($result_autor);
+            $tipo_usuario = "autor";
+        } else {
+            // Buscar en tabla revisores
+            $query_revisor = "SELECT rut_revisor AS rut, nombre_revisor AS nombre, correo_revisor AS correo, usuario_revisor AS usuario, contraseña_revisor AS password 
+                              FROM revisores 
+                              WHERE usuario_revisor = '$usuario'";
+            $result_revisor = mysqli_query($conexion, $query_revisor);
+            if ($result_revisor && mysqli_num_rows($result_revisor) == 1) {
+                $row = mysqli_fetch_assoc($result_revisor);
+                $tipo_usuario = "revisor";
+            } else {
+                $row = null;
+            }
+        }
 
-            // Verifica la contraseña utilizando password_verify()
-            if (password_verify($password, $hashed_password)) {
-                // Inicio de sesión exitoso
-                $_SESSION["usuario_id"] = $row["id"];
-                $_SESSION["usuario_rol"] = $row["rol"];
+        if ($row) {
+            // Verificar contraseña
+            if (password_verify($password, $row["password"])) {
+                $_SESSION["usuario_rut"] = $row["rut"];
+                $_SESSION["usuario_nombre"] = $row["nombre"];
+                $_SESSION["usuario_correo"] = $row["correo"];
+                $_SESSION["usuario_tipo"] = $tipo_usuario;
 
-                // Redirige a la página principal (home.php)
                 header("Location: home.php");
                 exit();
             } else {
@@ -46,10 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Incluye el HTML del formulario de login
 include("../HTML/login.html");
 
-// Puedes pasar variables a login.html si es necesario (ejemplo)
 echo "<script>
         document.addEventListener('DOMContentLoaded', function() {
             let errorMessage = document.getElementById('error-message');
@@ -58,5 +63,4 @@ echo "<script>
             }
         });
       </script>";
-
 ?>
