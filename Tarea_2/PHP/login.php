@@ -1,4 +1,9 @@
 <?php
+# Con esto te sale el error de consola
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start(); 
 include("conexion.php");
 
@@ -13,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Buscar en tabla autores
         $query_autor = "SELECT rut_autor AS rut, nombre_autor AS nombre, correo_autor AS correo, usuario_autor AS usuario, contraseña_autor AS password 
-                        FROM autores 
+                        FROM Autores 
                         WHERE usuario_autor = '$usuario'";
         $result_autor = mysqli_query($conexion, $query_autor);
 
@@ -23,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Buscar en tabla revisores
             $query_revisor = "SELECT rut_revisor AS rut, nombre_revisor AS nombre, correo_revisor AS correo, usuario_revisor AS usuario, contraseña_revisor AS password 
-                              FROM revisores 
+                              FROM Revisores 
                               WHERE usuario_revisor = '$usuario'";
             $result_revisor = mysqli_query($conexion, $query_revisor);
             if ($result_revisor && mysqli_num_rows($result_revisor) == 1) {

@@ -10,10 +10,13 @@ Fecha:  10/04/2025
 [Herramientas Utilizadas]
 
 -----------------------------------------------------------------------------------------------------------
--SQL server: Creación de la base de datos.
+-PHP(8.1.2): Manejo web de base de datos
+-MySQL(8.0.42): Creación de la base de datos.
+-PhpMyAdmin(5.1.1): Manejo de base de datos
+-XAMPP/Apache2(2.4.52): Servidor de la Base de datos
 -Lucidchart: Utilizado para graficar el modelo conceptual.
--Excel: Para fabricar el diccionario de datos.
 -Python: Para generar los datos y insertarlos, es necesario instalar la libreria faker
+-Firefox(138.0.1)/(inserte navegador): Navegador Utilizado para la visualizacion del servidor
 -----------------------------------------------------------------------------------------------------------
 
 [Ambiente de Ejecución Usado]
@@ -21,8 +24,7 @@ Fecha:  10/04/2025
 -----------------------------------------------------------------------------------------------------------
 - Sistema Operativo usado: Windows 11, Ubuntu 22.04.5 
 - Visual studio Code
-- PhpMyAdmin (con Apache2)
--
+- PhpMyAdmin (con XAMPP y Apache2)
 -----------------------------------------------------------------------------------------------------------
 
 [Estructura de Archivos y Descripción]
@@ -33,6 +35,7 @@ tarea 2/
 │   ├── create.sql         : Script SQL para crear la base de datos y las tablas en MySQL.
 │   └── Datos/
 │       ├── poblador_todas_las_tablas.sql     : Script SQL para insertar datos de prueba en la base de datos.
+│       ├── Insert_extra                      : Script SQL para insertar datos extra de prueba en la base de datos.
 │       ├── fabricador poblador.py    : Script Python para poblar la BD a partir de los CSV.
 │       ├── generador de datos.py    : Script Python para generar datos random en CSV con el formato de la BD.
 │       ├── CSV/    : Carpeta con los Archivos CSV con datos para la base de datos (generado con Python).

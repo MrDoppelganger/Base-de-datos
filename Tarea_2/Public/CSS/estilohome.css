@@ -16,6 +16,7 @@ body.pagina-autor {
     justify-content: space-between;
     align-items: flex-start;
     gap: 30px;
+    position: relative;
 }
 
 /* Formulario morado (izquierda) */
@@ -31,7 +32,6 @@ body.pagina-autor {
     flex-shrink: 0;
 }
 
-/* Decoración del panel */
 .formulario-articulo::before {
     content: "";
     position: absolute;
@@ -42,8 +42,9 @@ body.pagina-autor {
     background-color: #50295c;
     border-radius: 10px 10px 0 0;
     transform: translateX(-50%);
-    z-index: -1;
+    z-index: 10;
 }
+
 
 .formulario-articulo::after {
     content: "";
@@ -55,11 +56,10 @@ body.pagina-autor {
     background-color: rgb(212, 48, 212);
     border-radius: 50%;
     box-shadow: 30px 0 0 rgb(212, 48, 212), 60px 0 0 rgb(212, 48, 212);
+    z-index: 20;
 }
 
 /* Estilos del formulario (mantén los que tienes) */
-
-/* Tabla (derecha) */
 .tabla-articulos {
     width: 45%;
     min-width: 450px;
@@ -67,6 +67,7 @@ body.pagina-autor {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 
 /* Estilos de tabla (mantén los que tienes) */

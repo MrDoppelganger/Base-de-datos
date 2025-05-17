@@ -1,85 +1,60 @@
 /* estilos.css */
 
-/*----------------------Estilo General-------------------- */
+/*---------------------- Estilo General -------------------- */
+/* Define el estilo base del cuerpo de la página */
 body {
     font-family: sans-serif;
     background-color: #798eaa;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
 }
 
+/* Contenedor principal con ancho máximo y ocultamiento de desbordamiento */
 .container {
     width: 80%;
-    margin: auto;
+    max-width: 600px; 
     overflow: hidden;
 }
 
-/* ----------------Estilo Header(header.php)----------------*/
+/* ---------------- Estilo Header (header.php) ---------------- */
+/* Oculta el header por defecto */
 #header {
-    background: #333;
-    color: white;
-    padding-top: 20px;
-    min-height: 70px;
+    display: none;
 }
 
-#header h1 {
-    float: left;
-    margin-top: 10px;
-}
-
-#header nav {
-    float: right;
-    margin-top: 10px;
-}
-
-#header nav ul {
-    margin: 0;
-    padding: 0;
-}
-
-#header li {
-    float: left;
-    display: inline;
-    padding: 0 20px 0 20px;
-}
-
-#header a {
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 16px;
-}
-
-#header a:hover {
-    color: #aaa;
-}
-
-/*-------------------Estilo Login(login.html)-------------------- */
+/*------------------- Estilo Login (login.html) -------------------- */
+/* Contenedor principal del formulario de login */
 .login-container {
-    width: 600px;
-    margin: 200px auto;
+    width: 90%; 
+    max-width: 700px; 
     padding: 40px;
     border: 2px solid #a38ca3;
     border-radius: 10px;
     background-color: #bb97bd;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
     position: relative;
 }
 
-/* Marco */
+/* ---------------- Estilos del marco superior ---------------- */
+/* Bordes superiores del contenedor */
 .login-container::before {
     content: "";
     position: absolute;
     top: -2px;
     left: 50%;
-    width: 682px;
+    width: calc(100% + 4px); 
     height: 40px;
     background-color: #50295c;
     border-radius: 10px 10px 0 0;
     transform: translateX(-50%);
+    z-index: 1; 
 }
 
-/* Bolitas */
+/* Triple Bolitas del marco superior */
 .login-container::after {
     content: "";
     position: absolute;
@@ -90,92 +65,150 @@ body {
     background-color: rgb(212, 48, 212);
     border-radius: 50%;
     box-shadow: 30px 0 0 rgb(212, 48, 212), 60px 0 0 rgb(212, 48, 212);
+    z-index: 2; 
 }
 
-/* Titulo */
+/* ---------------- Estilos del Título ---------------- */
+/* Configura el estilo del título principal */
 .login-container h2 {
     text-align: center;
-    font-size: 300%;
+    font-size: 350%; 
     color: #333;
+    margin-bottom: 20px; 
 }
 
-/* Margen */
-.form-group {
-    margin-bottom: 30px;
+/* ---------------- Estilos para el tipo de usuario ---------------- */
+/* Contenedor del selector de tipo de usuario */
+.tipo {
+    margin-bottom: 10px;
+    text-align: center; 
 }
 
-/* Texto de inputs*/
+/* Estilos de los labels del tipo de usuario */
+.tipo label {
+    display: inline-block; 
+    margin-right: 15px; 
+    color: #040018;
+    vertical-align: middle; 
+}
+
+/* Espaciado de los botones de tipo de usuario */
+.tipo input[type="radio"] {
+    vertical-align: middle; 
+    margin-right: 5px;
+}
+
+/* ---------------- Estilos de los campos del formulario ---------------- */
+/* Ajuste de margen para los distintos campos de entrada */
+.rut,
+.form-nombre,
+.correo,
+.usuario,
+.pass {
+    margin-bottom: 10px;
+}
+
+/* Estilos generales para los labels */
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px; 
     color: #040018;
+    font-size: 1.4em; 
 }
 
-/* visual input*/
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd; /* Borde más suave */
-    border-radius: 5px;
-    box-sizing: border-box; /* Importante para el padding */
+/* Estilos de los inputs de texto, contraseña y correo */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: calc(100% - 22px); 
+    padding: 12px; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+    font-size: 1em; 
 }
 
-/* visual input boton*/
+/* ---------------- Estilos del botón de envío ---------------- */
+/* Contenedor del botón */
+.cuenta {
+    margin-top: 30px; 
+    text-align: center; 
+}
+
+/* Botón de envío */
 input[type="submit"] {
-    width: 100%;
-    padding: 10px;
+    width: 70%;
+    padding: 12px; 
     background-color: #72081f;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; 
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Transición suave */
+    transition: background-color 0.3s ease; 
+    font-size: 1.1em; 
+    display: block; 
+    margin: auto; 
 }
 
+/* Cambia el color al pasar el cursor sobre el botón */
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #5e0618; 
 }
 
+/* ---------------- Mensajes de error ---------------- */
 .error-message {
     color: red;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-align: center;
+    font-size: 0.9em;
 }
 
-/*-------------------------Estilos para enlaces--------------- */
-a {
+/* ---------------- Estilos para enlaces ---------------- */
+/* Configuración del texto y margen en enlaces */
+.login-container p {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Estilo de los enlaces */
+.login-container a {
     color: #72081f;
     text-decoration: none;
+    font-weight: bold;
 }
 
-a:hover {
+/* Efecto hover en los enlaces */
+.login-container a:hover {
     text-decoration: underline;
+    color: #5e0618;
 }
 
-/*---------------------Estilos del pie de página(footer.php)------------------*/
+/* ---------------- Estilos del pie de página (footer.php) ---------------- */
 #footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
+    display: none; 
 }
 
-/*------------Logo------------------*/
+/* ---------------- Estilos del logo ---------------- */
 #logo {
-    float: left;
-    width: 150px; /* Ajusta el ancho según tu logo */
-    height: auto;
+    display: none; 
 }
 
-/*----------------- Fondo----------------------*/
+/* ---------------- Estilos del fondo ---------------- */
+/* Configuración del fondo de la página */
 body {
     background-image: url('../IMG/background.png');
     background-size: cover;
     background-repeat: no-repeat;
-} 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-/* Otros estilos que puedas necesitar para tablas, listas, etc. */
+/* ---------------- Estilos generales para tablas ---------------- */
+/* Estos estilos generalmente no se aplican directamente al login */
+/*
 table {
     width: 100%;
     border-collapse: collapse;
@@ -190,3 +223,5 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+*/
+

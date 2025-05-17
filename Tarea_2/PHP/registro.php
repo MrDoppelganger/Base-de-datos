@@ -1,56 +1,94 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="../Public/CSS/estilos.css">
-</head>
-<body>
+<?php
+//--------------------inicialización-----------------
+ //iniciamos sesion y nos conectamos a la base de datos.
+ session_start();
+ include("conexion.php");
 
-    <div class="login-container">
-        <h2>Registro de Usuario</h2>
+ // Creamos una Array para almacenar los errores.
+ $errores = array();
 
-        <form action="tipor.php" method="post">
-            <div class="rut">
-                <label for="rut">RUT:</label>
-                <input type="text" name="rut" required>
-            </div>
+//-------------------Registro en la BD---------------
+ if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Obtenemos y validamos los datos del formulario.
+    $rut = $_POST["rut"];
+    $nombre = $_POST["nombre"];
+    $correo = $_POST["correo"];
+    $tipo_usuario = $_POST["tipo_usuario"];
+    $usuario = $_POST["usuario"];
+    $password = $_POST["password"];
 
-            <div class="form-nombre">
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" required>
-            </div>
+    //------------------Validaciones----------------------
+    // Realizamos algunas validaciones de los campos.
+    if (empty($rut) || empty($nombre) || empty($correo) || empty($tipo_usuario) || empty($usuario) || empty($password)) {
+        $errores[] = "Todos los campos son obligatorios.";
+    }
+    if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        $errores[] = "El correo electrónico no es válido.";
+    }
+    if (strlen($password) < 8) {
+        $errores[] = "La contraseña debe tener al menos 8 caracteres.";
+    }
 
-            <div class="correo">
-                <label for="correo">Correo:</label>
-                <input type="email" name="correo" required>
-            </div>
+    // Antes de registrar, verificamos que el nuevo usario no este en la tabla de revisores ni de autores segun el tipo de usuario.
+    $tabla = ($tipo_usuario == "autor") ? "Autores" : "Revisores";
+    $campo_usuario = ($tipo_usuario == "autor") ? "usuario_autor" : "usuario_revisor";
+    $campo_rut = ($tipo_usuario == "autor") ? "rut_autor" : "rut_revisor";
 
-            <div class="tipo">
-                <label for="tipo_usuario">Tipo de Usuario:</label><br>
-                <input type="radio" id="autor" name="tipo_usuario" value="autor" required>
-                <label for="autor">Autor</label>
-                <input type="radio" id="revisor" name="tipo_usuario" value="revisor">
-                <label for="revisor">Revisor</label>
-            </div>
+    // Verificamos si existe el usuario
+    $consulta_usuario = "SELECT COUNT(*) FROM $tabla WHERE $campo_usuario = '$usuario'";
+    $resultado_usuario = mysqli_query($conexion, $consulta_usuario);
+    $fila_usuario = mysqli_fetch_array($resultado_usuario);
 
-            <div class="usuario">
-                <label for="usuario">Usuario:</label>
-                <input type="text" name="usuario" required>
-            </div>
+    if ($fila_usuario[0] > 0) {
+        $errores[] = "El usuario ya existe.";
+    }
 
-            <div class="pass">
-                <label for="password">Contraseña:</label>
-                <input type="password" name="password" required>
-            </div>
+    // Verificamos si existe el RUT
+    $consulta_rut = "SELECT COUNT(*) FROM $tabla WHERE $campo_rut = '$rut'";
+    $resultado_rut = mysqli_query($conexion, $consulta_rut);
+    $fila_rut = mysqli_fetch_array($resultado_rut);
 
-            <div class="cuenta">
-                <input type="submit" value="Registrarse">
-            </div>
+    if ($fila_rut[0] > 0) {
+        $errores[] = "El RUT ya existe.";
+    }
 
-            <p>¿Ya tienes cuenta? <a href="login.php">Inicia Sesión</a></p>
-        </form>
-    </div>
+    //----------------Insercion en la BD-----------------
+    // Si todas las validaciones se cumplen, procedemos a hashear nuestra contraseña.
+    if (count($errores) == 0) {
+        $password_hasheado = password_hash($password, PASSWORD_DEFAULT);
 
-</body>
-</html>
+        # Insertamos los autores.
+        if ($tipo_usuario == "autor") {
+            $insertar = "INSERT INTO Autores (rut_autor, nombre_autor, correo_autor, usuario_autor, contraseña_autor)
+            VALUES ('$rut', '$nombre', '$correo', '$usuario', '$password_hasheado')";
+        } 
+        #Insertamos los revisores
+        else {
+            $insertar = "INSERT INTO Revisores (rut_revisor, nombre_revisor, correo_revisor, usuario_revisor, contraseña_revisor)
+            VALUES ('$rut', '$nombre', '$correo', '$usuario', '$password_hasheado')";
+        }
+
+        #Informamos en caso de que se haya completado la inserición o no.
+        if (mysqli_query($conexion, $insertar)) {
+            $_SESSION['mensaje'] = "¡Registro exitoso! Ya puedes iniciar sesión.";
+            header("Location: registro_exitoso.php");
+            exit();
+        }
+         else {
+            $errores[] = "Error al registrar el usuario: " . mysqli_error($conexion);
+        }
+    }
+ }
+
+ include("../HTML/registro.html");
+
+ echo "<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  let errorMessage = document.getElementById('error-message');
+  if (errorMessage) {
+  errorMessage.textContent = '" . htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8') . "';
+  }
+  });
+  </script>";
+
+ ?>
