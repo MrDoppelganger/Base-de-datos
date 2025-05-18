@@ -39,7 +39,7 @@ CREATE TABLE Revisores (
 
 -- TABLA Articulos: Son articulos los articulos que los revisores miraran, los autores escriben los articulos segun ciertos topicos
 CREATE TABLE Articulos (
-    id_articulo INT NOT NULL PRIMARY KEY, 
+    id_articulo INT AUTO_INCREMENT NOT NULL PRIMARY KEY, 
     titulo VARCHAR(100) NOT NULL,
     fecha_envio DATE NOT NULL,
     resumen VARCHAR(150) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE Especialidad_Topico (
 /* *******************CLASES DEBILES********************** */
 -- TABLA Revision: clase asociativa para la relacion M;N entre revisores y autores
 CREATE TABLE Revision (
-    id_articulo INT NOT NULL,
+    id_articulo INT AUTO_INCREMENT NOT NULL,
     rut_revisor VARCHAR(9) NOT NULL,
     fecha_revision DATE,
     comentarios VARCHAR(150),

@@ -122,13 +122,13 @@ def generar_insert_datos_extra(ruta_salida_sql = str):
 
     # Establecemos los insert de cada usuario de prueba
     insert_autor = f"INSERT INTO Autores (rut_autor, nombre_autor, correo_autor, rol_autor, usuario_autor, contraseña_autor) VALUES " \
-                   f"('111111111', 'Test Autor', 'test.autor@example.com', 'Autor', 'testautor', '{contrasena_hasheada}');\n"
+                   f"('111111111', 'Test Autor', 'test.autor@example.com', 'autor', 'testautor', '{contrasena_hasheada}');\n"
 
     insert_revisor = f"INSERT INTO Revisores (rut_revisor, nombre_revisor, correo_revisor, rol_revisor, usuario_revisor, contraseña_revisor) VALUES " \
-                    f"('222222222', 'Test Revisor', 'test.revisor@example.com', 'Revisor', 'testrevisor', '{contrasena_hasheada}');\n"
+                    f"('222222222', 'Test Revisor', 'test.revisor@example.com', 'revisor', 'testrevisor', '{contrasena_hasheada}');\n"
     
     insert_admin_revisor = f"INSERT INTO Revisores (rut_revisor, nombre_revisor, correo_revisor, rol_revisor, usuario_revisor, contraseña_revisor) VALUES " \
-                    f"('333333333', 'Test AdminRevisor', 'test.adminrevisor@example.com', 'AdminRevisor', 'testadminrevisor', '{contrasena_hasheada}');\n"
+                    f"('333333333', 'Test AdminRevisor', 'test.adminrevisor@example.com', 'admin', 'testadminrevisor', '{contrasena_hasheada}');\n"
 
     # Escribimos los insert en nuestro archivo de datos extra (atrapamos los errores mediante un try)
     try:

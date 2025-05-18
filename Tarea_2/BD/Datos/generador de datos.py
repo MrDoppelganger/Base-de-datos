@@ -184,7 +184,7 @@ def generar_articulos(cantidad, autores_disponibles, topico_a_id_map):
             'titulo': titulo,
             'fecha_envio': fecha_envio,
             'resumen': resumen,
-            'estado': 'Enviado' # Añadir un estado aleatorio
+            'estado': 'evaluado' # Añadimos como valor inicial evaluados
         })
 
         # Guardar relación Artículo-Tópico (sin cambios)

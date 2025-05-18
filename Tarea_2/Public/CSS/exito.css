@@ -1,0 +1,51 @@
+/* ------------------ Estilos Generales ------------------ */
+body {
+    background-image: url('/Public/IMG/background_4.png');
+    background-color: #333; /* Fondo de respaldo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+/* ------------------ Contenedor del Mensaje ------------------ */
+.card {
+    background-color: rgb(150, 125, 167);
+    padding: 30px;
+    margin: auto;
+    max-width: 500px;
+    text-align: center; 
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+}
+
+/* ------------------ Texto ------------------ */
+.card h1 {
+    font-size: 2.5rem;
+    color: #50295c;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* ------------------ Botón ------------------ */
+.boton {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center; 
+    padding: 10px 25px;
+    background-color:rgb(128, 17, 50);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.boton:hover {
+    background-color:rgb(110, 21, 63);
+    text-align: center; 
+}

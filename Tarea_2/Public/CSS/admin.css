@@ -1,0 +1,198 @@
+/* ------------------ Estilos Generales ------------------ */
+body.pagina-admin {
+    font-family: Arial, sans-serif;
+    background-color: #2e2e2e;
+    margin: 20px;
+    padding: 30px;
+    color: #080808;
+    background: url('../IMG/background_5.png') fixed;
+    background-size: cover;
+}
+
+/* ------------------ Contenedor principal ------------------ */
+.ver-revisores {
+    width: 100%;
+    max-width: 1500px;
+    margin: 30px auto;
+    padding: 40px;
+    background-color: #a38ca3;
+    border-top: 8px solid #a38ca3; /* Se mantiene el borde superior */
+    border-radius: 2px 2px 0 0; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* ------------------ Marco superior decorativo ------------------ */
+.ver-revisores::before {
+    content: "";
+    position: absolute;
+    top: -27px;
+    left: 50%;
+    width: calc(100%);
+    height: 40px;
+    background-color: #50295c;
+    border-radius: 10px 10px 0 0;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* ------------------ Bolitas decorativas ------------------ */
+.ver-revisores::after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(212, 48, 212);
+    border-radius: 50%;
+    box-shadow: 30px 0 0 rgb(212, 48, 212), 60px 0 0 rgb(212, 48, 212);
+    z-index: 2;
+}
+
+/* ------------------ Títulos ------------------ */
+.ver-revisores h3 {
+    text-align: center;
+    font-size: 3rem;
+    color: #070707;
+    margin-bottom: 15px;
+}
+
+/* ------------------ Estilos de la tabla ------------------ */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;  /* Para una cuadricula uniforme */
+    background-color: transparent !important;
+    vertical-align: middle;
+    table-layout: fixed; 
+}
+
+/* Asignación de anchos a cada columna (orden: Nombre, Correo, Tópicos, Usuario, Contraseña, Acciones) */
+.table th:nth-child(1), .table td:nth-child(1) { width: 11%; }
+.table th:nth-child(2), .table td:nth-child(2) { width: 18%; }
+.table th:nth-child(3), .table td:nth-child(3) { width: 10%; }
+.table th:nth-child(4), .table td:nth-child(4) { width: 23%; }
+.table th:nth-child(5), .table td:nth-child(5) { width: 31%; }
+.table th:nth-child(6), .table td:nth-child(6) { width: 7%; }
+
+
+.table th,
+.table td {
+    border: 1px solid #7b7b7b;  /* Cuadrícula con gris oscuro / azul grisáceo */
+    padding: 12px;
+    text-align: center;         /* Centrar todos los datos de la tabla */
+    vertical-align: middle;
+}
+
+/* Cabecera de la tabla */
+.table thead th {
+    background-color: #0e2b46;
+    color: white;
+}
+
+/* Filas: alternar fondo para mejorar la legibilidad */
+.table tr:nth-child(even) {
+    background-color: #c0c4d0; /* Azul grisáceo */
+}
+.table tr:nth-child(odd) {
+    background-color: #d4d8e0; /* Azul grisáceo claro */
+}
+.table tr:hover {
+    background-color: #a0a4b0;
+}
+
+/* ------------------ Estilo para la columna de Tópicos ------------------ */
+td.topicos {
+    text-align: left; /* Alinear el texto a la izquierda */
+    padding-left: 40px; /* Deja espacio para el bullet */
+    position: relative;
+}
+
+/* ------------------ Botones de acción en la tabla (Actividades) ------------------ */
+.acciones {
+    justify-content: center;
+    align-items: center;  /* Centrado vertical y horizontal */
+    gap: 5px;
+    overflow: visible;   /* Asegura que el contenido no se corte */
+    white-space: nowrap;  /* Evita que se realicen saltos de línea */
+}
+
+
+/* ------------------ Botones de Bootstrap (personalizados) ------------------ */
+.btn-cerrar-sesion {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 15px;
+    background-color: #50295c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+.btn-cerrar-sesion:hover {
+    background-color: #3a1d42;
+}
+
+/* ------------------ Botón para agregar revisor ------------------ */
+.contenedor-boton {
+    text-align: right;
+    margin-top: 20px;
+}
+.contenedor-boton .btn {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #691d27;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.contenedor-boton .btn:hover {
+    background-color: #3f0a1c;
+    transform: translateY(-2px);
+}
+
+/* ------------------ Botón de escape  ------------------ */
+.volver-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+.volver-link {
+    display: inline-block;
+    padding: 20px 18px;
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+    background-color: #6d1a33;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.volver-link:hover {
+    background-color: #6d1a33;
+    transform: translateY(-2px);
+}
+/* Estilo para filas de administradores */
+.table-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+/* Botón deshabilitado */
+.btn-danger.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+/* Tooltips */
+[title] {
+    position: relative;
+    cursor: pointer;
+}
