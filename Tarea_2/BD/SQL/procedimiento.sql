@@ -43,25 +43,3 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
-
--- Trigger de auditoría
-DELIMITER //
-CREATE TRIGGER after_revisor_insert
-AFTER INSERT ON Revisores
-FOR EACH ROW
-BEGIN
-    INSERT INTO logs_administracion (
-        accion, 
-        tabla_afectada, 
-        id_afectado, 
-        usuario_admin, 
-        fecha
-    ) VALUES (
-        'INSERT', 
-        'Revisores', 
-        NEW.rut_revisor, 
-        (SELECT usuario_autor FROM Autores WHERE rol_autor = 'admin' LIMIT 1), 
-        NOW()
-    );
-END //
-DELIMITER ;
