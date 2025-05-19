@@ -58,17 +58,12 @@ tarea 2/
 │   │   └── navbar.php     : (Opcional) Fragmento HTML para la barra de navegación.
 │   └── login.php          : Archivo PHP que muestra el formulario de inicio de sesión y procesa el inicio de sesión.
 │                            Conecta con la base de datos usando conexion.php. Es el punto de entrada a la aplicación.
-├── HTML/                  : HTML de las paginas.
-│   └── login.html
-│   └── home.html 
-│   └── ... (otros archivos HTML)
+├── HTML/                  : Aqui se ubican principalmente las views con html .
 ├── public/
 │   ├── css/
 │   │   └── estilos.css     : Archivo CSS para definir el estilo de la página web.
 │   ├── js/
-│   │   └── script.js      : (Opcional) Archivo JavaScript para funcionalidades del lado del cliente.
-│   ├── img/
-│   │   └── logo.png       : (Opcional) Archivo de imagen para el logo.
+│   └── img/
 ├── README.md            : Archivo con la descripción del proyecto, instrucciones y consideraciones.
 -----------------------------------------------------------------------------------------------------------
 
