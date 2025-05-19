@@ -96,8 +96,8 @@ include "conexion.php";
                                 <i class="fas fa-edit"></i>
                             </a>
                             <a href="#" onclick="return confirmarEliminacion('<?= htmlspecialchars($revisor->rut_revisor) ?>')" 
-                               class="btn btn-sm btn-danger <?= $esAdmin ? 'disabled' : '' ?>" 
-                               title="<?= $esAdmin ? 'No se pueden eliminar administradores' : 'Eliminar' ?>">
+                                    class="btn btn-sm btn-danger"
+                                    title="Eliminar">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
