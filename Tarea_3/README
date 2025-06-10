@@ -10,21 +10,28 @@ Fecha:  10/04/2025
 [Herramientas Utilizadas]
 
 -----------------------------------------------------------------------------------------------------------
-
+-Docker 28.2.2
+-Docker Compose v2.36.0-desktop.1
+-Docker Desktop CLI plugin version v0.1.8
+-MongoDb
+-MongoDb Compass
 -----------------------------------------------------------------------------------------------------------
 
 [Ambiente de Ejecución Usado]
 
 -----------------------------------------------------------------------------------------------------------
-- Sistema Operativo usado: Windows 11, Ubuntu
-
+- Sistema Operativo usado: Windows 11, Ubuntu 22.04.5 LTS
+- visual studio code
+- terminal (linux)
 -----------------------------------------------------------------------------------------------------------
 
 [Instrucciones de Ejecución]
 
 -----------------------------------------------------------------------------------------------------------
-
-
+-Se mapean los nombres de los conteiners en la IP local:
+    -Linux: Se accedio desde la terminal al "/etc/host" y se añadio la linea: 127.0.0.1 mongo1 mongo2 mongo3
+-Se ejecuta la configuracion de los conteiners que nos aporta la tarea mediante el comando en la terminal: docker compose up -d
+-se ejecuta el poblamiento de articulos a los conteiners mediante el codigo editado: arXuv_edited.ipynb
 
 -----------------------------------------------------------------------------------------------------------
 
