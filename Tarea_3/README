@@ -3,7 +3,7 @@
 
 ===========================================================================================================
 Nombre: Vicente Rodríguez Rogers		21.303.222-4	202273503-1	201
-	Nicolás Muñoz  				21.270.184-K	202273641-0	200
+        Nicolás Muñoz  				    21.270.184-K	202273641-0	200
 Fecha:  10/04/2025
 -----------------------------------------------------------------------------------------------------------
 
@@ -15,23 +15,21 @@ Fecha:  10/04/2025
 -Docker Desktop CLI plugin version v0.1.8
 -MongoDb
 -MongoDb Compass
+-jupyter
 -----------------------------------------------------------------------------------------------------------
 
 [Ambiente de Ejecución Usado]
 
 -----------------------------------------------------------------------------------------------------------
 - Sistema Operativo usado: Windows 11, Ubuntu 22.04.5 LTS
-- visual studio code
-- terminal (linux)
+- visual studio code (con extension de jupyter)
+- terminal
 -----------------------------------------------------------------------------------------------------------
 
 [Instrucciones de Ejecución]
 
 -----------------------------------------------------------------------------------------------------------
--Se mapean los nombres de los conteiners en la IP local:
-    -Linux: Se accedio desde la terminal al "/etc/host" y se añadio la linea: 127.0.0.1 mongo1 mongo2 mongo3
--Se ejecuta la configuracion de los conteiners que nos aporta la tarea mediante el comando en la terminal: docker compose up -d
--se ejecuta el poblamiento de articulos a los conteiners mediante el codigo editado: arXuv_edited.ipynb
+-Para la Ejecución del codigo se encuentran los pasos en pymongo-202273503-1202273641-0.Ipynb
 
 -----------------------------------------------------------------------------------------------------------
 
@@ -39,3 +37,8 @@ Fecha:  10/04/2025
 
 -----------------------------------------------------------------------------------------------------------
 
+-Se modifico el codigo entregado para la poblacion de los conteiners, en funcion de salvaguardar la explotacion
+de mi pc, los cambios son principalmente para reiniciar el future y asi no sobrepasar la CPU
+-Se Realizaron 2 codigos para la consulta a, debido a una Consideraciones con respecto a la limitacion de 20
+- el documento .json con los datos son lo mismos entregados en la tarea, asi que debido a el tamaño del archivo, se 
+obvia la entrega de este.
