@@ -2,7 +2,7 @@
 
 > **University:** Universidad Técnica Federico Santa María (UTFSM)  
 > **Program:** Civil Engineering in Informatics  
-> **Course:** Bases de Datos (INF-239) [2° Semester/2024]
+> **Course:** Bases de Datos (INF-239) [1° Semester/2025]
 
 -----------------------------------------------------------------------------------------------------------
 
